@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Kitchen.h"
+#import "Pizza.h"
 
 int main(int argc, const char * argv[])
 {
@@ -35,6 +36,25 @@ int main(int argc, const char * argv[])
             NSArray *commandWords = [inputString componentsSeparatedByString:@" "];
             
             // And then send some message to the kitchen...
+
+            
+            NSString *sizeString = commandWords[0];
+            PizzaSizes size = [sizeString characterAtIndex:0];
+            
+            [restaurantKitchen makePizzaWithSize:size toppings:[commandWords subarrayWithRange:NSMakeRange(1, (commandWords.count-1))]];
+            
+
+            
+            
+            
+            
+            
+            
+            //            [restaurantKitchen makePizzaWithSize:[commandWords objectAtIndex:0] toppings:[commandWords subarrayWithRange:NSMakeRange(1, commandWords.count-1)]];
+            
+            //--------The above code could also work with this----
+            //            NSMutableArray* ar = [NSMutableArray arrayWithArray:commandWords];
+            //            [ar removeObjectAtIndex:0];
         }
 
     }

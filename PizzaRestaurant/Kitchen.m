@@ -10,9 +10,15 @@
 
 @implementation Kitchen
 
-/*- (Pizza *)makePizzaWithSize:(PizzaSize)size toppings:(NSArray *)toppings
+- (Pizza *)makePizzaWithSize:(PizzaSizes)size toppings:(NSArray *)toppings
 {
     
-}*/
+    Pizza *newPizza = [[Pizza alloc] initWithSize:size andTopping:toppings];
+    
+    [newPizza sizeOfPizza];
+    [newPizza pizzaToppings];
+    
+    return newPizza;
+}
 
 @end
