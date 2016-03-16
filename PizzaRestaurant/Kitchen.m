@@ -7,18 +7,33 @@
 //
 
 #import "Kitchen.h"
+#import "KitchenDelegate.h"
 
 @implementation Kitchen
 
+
 - (Pizza *)makePizzaWithSize:(PizzaSizes)size toppings:(NSArray *)toppings
 {
+    if (self.delegate) {
+        
+        [self.delegate kitchen:self shouldMakePizzaOfSize:size andToppings:toppings];
+        [self.delegate kitchenShouldUpgradeOrder:self];
+        
+        Pizza *newPizza = [[Pizza alloc] initWithSize:size andTopping:toppings];
+        [newPizza sizeOfPizza];
+        [newPizza pizzaToppings];
+     
+        return newPizza;
     
-    Pizza *newPizza = [[Pizza alloc] initWithSize:size andTopping:toppings];
+    }
     
-    [newPizza sizeOfPizza];
-    [newPizza pizzaToppings];
+    if (![self.delegate kitchen:self shouldMakePizzaOfSize:size andToppings:toppings]) {
+        
+        return nil;
     
-    return newPizza;
+    }
+    
+    
 }
 
 @end

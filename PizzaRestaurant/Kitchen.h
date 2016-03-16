@@ -11,10 +11,14 @@
 
 @class Pizza;
 
+@protocol KitchenDelegate;
+
+
 @interface Kitchen : NSObject
 
+@property (nonatomic, weak) id<KitchenDelegate> delegate;
+
+
 - (Pizza *)makePizzaWithSize:(PizzaSizes)size toppings:(NSArray *)toppings;
-
-
 
 @end
